@@ -21,6 +21,11 @@ const serverlessConfiguration: AWS = {
         Effect: "Allow",
         Action: ["dynamodb:*"],
         Resource: ["*"]
+      },
+      {
+        Effect: "Allow",
+        Action: ["s3:*"],
+        Resource: ["*"]
       }
     ]
   },
@@ -50,6 +55,7 @@ const serverlessConfiguration: AWS = {
       define: { 'require.resolve': undefined },
       platform: 'node',
       concurrency: 10,
+      external: ['chrome-aws-lambda'],
     },
     dynamodb: {
       stages: ["dev", "local"],
